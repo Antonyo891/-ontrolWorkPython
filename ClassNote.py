@@ -2,24 +2,27 @@ from functools import total_ordering
 from TimeStamp import TimeStamp
 
 class Note:
-
-    def __init__(self,heading:str, note:str, note_id:int) -> None:
+    __timeStamp = TimeStamp()
+    def __init__(self,heading:str, note:str, note_id:int,
+                    __time_of_created:str = __timeStamp.GetTime()) -> None:
         self.__heading:str = heading
         self.__note: str = note
         self.__note_id: int = note_id
-        self.__time_of_created: str = TimeStamp().GetTime
+        self.__time_of_created: str = __time_of_created
     
-    def __init__(self, object:dict):
+    """ def Create(self, object:dict()):
+        dicto = object
         for key,value in object.items():
             self.__heading:str = key
             value_of_note = value
         self.__note = value_of_note["note"]
         self.__note_id = value_of_note["note_id"]
-        self.__time_of_created = value_of_note["time_of_created"]
+        self.__time_of_created = value_of_note["time_of_created"] """
 
 
     def __str__(self) -> str:
-        return self.GetNote()
+        return str(f"Id = {self.__note_id} {self.__time_of_created} {self.__heading} \n" +
+                   self.__note)
     
     def __lt__(self, other):
         return self.__time_of_created < other.__time_of_created
@@ -37,13 +40,13 @@ class Note:
         return {self.__heading:value}
     
     def GetHead(self):
-        return {self.__heading}
+        return self.__heading
     
     def GetNotesId(self):
-        return {self.__note_id}
+        return self.__note_id
     
     def GetTimeOfCreated(self):
-        return {self.__time_of_created}
+        return str(self.__time_of_created)
     
     def SetNote(self,note: str):
         self.__note = note

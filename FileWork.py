@@ -1,5 +1,7 @@
 from collections import OrderedDict
 import json
+import os
+from pathlib import Path
 
 
 def save(notes:OrderedDict):
@@ -11,7 +13,10 @@ def save(notes:OrderedDict):
             print("Сохранение завершено ошибкой")
 
 def load():
-    # global notes
+    fle = Path("notes.json")
+    fle.touch(exist_ok=True)
+    if os.stat("notes.json").st_size == 0:
+        return None
     with open("notes.json", "r", encoding="utf-8") as fh:
         try:
             notes = json.load(fh)
