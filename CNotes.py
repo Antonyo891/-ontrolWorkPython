@@ -4,8 +4,7 @@ from NoteController import NoteController
 from FileWork import save
 from FileWork import load
 from ClassNote import Note
-# notes = {"Дядя Петя": {"phone_numbers": [9998881234, 9997772233], "birth_day": "121276", "email": "mail@mail.ss"}, 
-#               "Тетя Песя": {"phone_numbers": [9998881444]}}
+
 
 def Menu():
     print()
@@ -17,8 +16,7 @@ def Menu():
     print('6 - Удалить заметку')
 
 
-
-    
+  
 os.system('cls')
 load_from_file: OrderedDict = load()
 if load_from_file==None:
