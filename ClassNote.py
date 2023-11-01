@@ -9,26 +9,18 @@ class Note:
         self.__note: str = note
         self.__note_id: int = note_id
         self.__time_of_created: str = __time_of_created
-    
-    """ def Create(self, object:dict()):
-        dicto = object
-        for key,value in object.items():
-            self.__heading:str = key
-            value_of_note = value
-        self.__note = value_of_note["note"]
-        self.__note_id = value_of_note["note_id"]
-        self.__time_of_created = value_of_note["time_of_created"] """
-
 
     def __str__(self) -> str:
         return str(f"Id = {self.__note_id} {self.__time_of_created} {self.__heading} \n" +
                    self.__note)
     
     def __lt__(self, other):
-        return self.__time_of_created < other.__time_of_created
+        note_temp:Note = other
+        return self.__time_of_created < note_temp.__time_of_created
 
     def __eq__(self, other):
-        return self.__time_of_created == other.__time_of_created
+        note_temp:Note = other
+        return self.__time_of_created == note_temp.__time_of_created
     
     def PrintNote(self):
         print(f" \n Created at {self.__time_of_created} Id = {self.__note_id} ")

@@ -43,17 +43,18 @@ class NoteController:
                 self.__note_list.pop(i)
                 break
         if note_is_in_list:
-            note = Note(heading, edit_note, note_id)
+            temp_time = TimeStamp()
+            note = Note(heading, edit_note, note_id,temp_time.GetTime())
             self.AddNote(note)
             print(f"Заметка {note.GetHead()} успешно изменена")
         else: 
             print(f"Заметки с названием {heading} нет в списке")
         
     def ReadNotes(self)-> dict:
-        sorted(self.__note_list)
+        temp_sorted_list:list = sorted(self.__note_list)
         i:int = 1
         result:dict = dict()
-        for item in self.__note_list:
+        for item in temp_sorted_list:
             note:Note = item
             print(f"{i}.) {note.GetTimeOfCreated()} {note.GetHead()} \n")
             result[i] = note.GetHead()
